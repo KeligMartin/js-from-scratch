@@ -14,4 +14,15 @@ let task5 = new Task("Créer la BDD", "instancier la BDD", 100)
 
 const tasks = [task1, task2, task3, task4, task5]
 
-console.table(tasks.sort((a, b) => b.priority - a.priority))
+tasks.forEach((task) => console.log(task))
+
+// natif
+// attention à la condition
+for(let i = 0; i < tasks.length; i++) {
+	console.log(tasks[i])
+}
+
+tasks.sort((a, b) => a.priority - b.priority)
+// natif
+
+// tri à bulle, tri par insertion
