@@ -48,3 +48,11 @@ const tasksMapNatif = []
 for(let i = 0; i < tasks.length; i++) {
 	tasksMapNatif.push(new Task(tasks[i].title, tasks[i].description, tasks[i].priority));
 }
+
+const priorityTotal = tasks.reduce((acc, currentValue) => acc + currentValue.priority, 0)
+
+// natif
+let total = 0
+for (let i = 0; i < tasks.length; i++) {
+	total = total + tasks[i].priority
+}
