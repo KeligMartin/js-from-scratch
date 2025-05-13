@@ -38,3 +38,13 @@ for(let i = 0; i < tasks.length; i++) {
 		tasksFiltreesNatif.push(tasks[i])
 	}
 }
+
+
+const tasksMap = tasks.map((task) => new Task(task.title, task.description, task.priority * 2))
+
+// natif
+
+const tasksMapNatif = []
+for(let i = 0; i < tasks.length; i++) {
+	tasksMapNatif.push(new Task(tasks[i].title, tasks[i].description, tasks[i].priority));
+}
