@@ -14,7 +14,9 @@ let task5 = new Task("Créer la BDD", "instancier la BDD", 100)
 
 const tasks = [task1, task2, task3, task4, task5]
 
-tasks.forEach((task) => console.log(task))
+tasks.forEach((task, index) => {
+	console.log(task, index)
+})
 
 // natif
 // attention à la condition
@@ -26,3 +28,13 @@ tasks.sort((a, b) => a.priority - b.priority)
 // natif
 
 // tri à bulle, tri par insertion
+
+const tasksFiltrees = tasks.filter((task) => task.priority > 15)
+
+// natif
+const tasksFiltreesNatif = []
+for(let i = 0; i < tasks.length; i++) {
+	if(tasks[i].priority > 15) {
+		tasksFiltreesNatif.push(tasks[i])
+	}
+}
