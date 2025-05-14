@@ -1,17 +1,57 @@
-const title = document.getElementById('title')
-title.innerText = 'Je suis modifié'
 
-const button = document.getElementById('btn-1')
-button.addEventListener('click', onClick)
+function saveJsonObjToFile() {
+	const saveObj = { "a": 3 }; // tmp
 
-function onClick() {
-	console.log('click')
+	// file setting
+	const text = JSON.stringify(saveObj);
+	const name = "sample.json";
+	const type = "text/plain";
+
+	// create file
+	const a = document.createElement("a");
+	const file = new Blob([text], { type: type });
+	a.href = URL.createObjectURL(file);
+	a.download = name;
+	document.body.appendChild(a);
+	a.click();
+	a.remove();
 }
 
-const input = document.getElementById('input-text')
-input.addEventListener('focus', () => console.log('tu es en train d ecrire'))
-input.addEventListener('blur', () => {
-	// vérifier que le champs est correct
-	// si pas correct => message d'erreur
-	// sinon rien
-})
+var test = true
+function resolveAfter2Seconds() {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			if(test === true){
+				resolve('succes !');
+				test = false
+			}
+			else {
+				reject("erreur !");
+				test = true
+			}
+		}, 2000);
+	});
+}
+
+function syncCall() {
+	console.log("starting sync");
+
+	const res =  resolveAfter2Seconds();
+	console.log("calling sync");
+
+	return res
+	// Expected output: "resolved"
+}
+
+async function asyncCall() {
+	console.log('starting async')
+
+	const res = await resolveAfter2Seconds();
+	console.log('resolved async')
+	return res
+}
+
+asyncCall().then((res) => console.log(res)).catch(err => console.error(err));
+syncCall().then((res) => console.log(res)).catch(err => console.error(err));
+
+asyncCall().then((res) => console.log(res)).catch(err => console.error(err));
