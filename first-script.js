@@ -18,15 +18,16 @@ function saveJsonObjToFile() {
 }
 
 var test = true
+
 function resolveAfter2Seconds() {
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {
 			if(test === true){
-				resolve('succes !');
+				resolve('succes !'); // renvoie le parametre
 				test = false
 			}
 			else {
-				reject("erreur !");
+				reject("erreur !"); // renvoie le parametre
 				test = true
 			}
 		}, 2000);
@@ -51,7 +52,8 @@ async function asyncCall() {
 	return res
 }
 
-asyncCall().then((res) => console.log(res)).catch(err => console.error(err));
+asyncCall().then((res) => console.log(`${res} 1`)).catch(err => console.error(err));
+
 syncCall().then((res) => console.log(res)).catch(err => console.error(err));
 
-asyncCall().then((res) => console.log(res)).catch(err => console.error(err));
+asyncCall().then((res) => console.log(`${res} 2`)).catch(err => console.error(err));
