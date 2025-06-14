@@ -1,17 +1,20 @@
-const title = document.getElementById('title')
-title.innerText = 'Je suis modifié'
+import { assertEqual, it } from './tests/scratch-test.js'
 
-const button = document.getElementById('btn-1')
-button.addEventListener('click', onClick)
-
-function onClick() {
-	console.log('click')
+function add(a, b) {
+	return a + b
 }
 
-const input = document.getElementById('input-text')
-input.addEventListener('focus', () => console.log('tu es en train d ecrire'))
-input.addEventListener('blur', () => {
-	// vérifier que le champs est correct
-	// si pas correct => message d'erreur
-	// sinon rien
+function divide(a, b) {
+	if(b === 0) {
+		return false
+	}
+	return a / b
+}
+
+it('should add correctly', () => {
+	assertEqual(add(2, 2), 4)
+})
+
+it('should not dive by zero', () => {
+	assertEqual(divide(1, 0), false)
 })
